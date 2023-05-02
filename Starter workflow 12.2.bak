@@ -1,0 +1,790 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2021.3">
+  <Nodes>
+    <Node ToolID="21">
+      <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+        <Position x="42" y="90" width="564" height="192" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Text><![CDATA[ASSIGNMENT
+
+1. Update the Existing Data Warehouse Orders table with the latest POS orders, placed in August 2021.
+
+2. Update the POS and Existing Data Warehouse Orders table with the returns information. That is, set the RETURNED column, to the right value.
+
+ 3. Update the Data Warehouse Customers table with the latest customer information from the POS input. That is, a customer may have changed their details, like address (anything that s not the customer ID) during their latest order. We want the Data Warehouse to be updated with the most recent customer details. Note that the POS system has the US State name in full. Ensure you change that to the State code prior to loading it into the Data Warehouse Customers table. For example, “Florida” should become “FL”. The State Lookup file provides a mapping you may use.
+]]></Text>
+          <Font name="Arial" size="8.25" style="0" />
+          <TextColor name="Black" />
+          <FillColor name="White" />
+          <Shape shape="0" />
+          <Justification Justification="4" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="15">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="521" y="317" width="482" height="321" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>OUTPUTS</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="4">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="546" y="366" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="25">.\Output - ORDERS.xlsx|||Sheet1</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <PreserveFormat>False</PreserveFormat>
+                <SkipFieldNames>False</SkipFieldNames>
+                <OutputOption>Create</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Output: Updated Order table</AnnotationText>
+              <DefaultAnnotationText>Output - ORDERS.xlsx
+Query=Sheet1</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="7">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="558" y="522" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="25">.\Output - CUSTOMERS.xlsx|||Sheet1</File>
+              <Passwords />
+              <FormatSpecificOptions>
+                <PreserveFormat>False</PreserveFormat>
+                <SkipFieldNames>False</SkipFieldNames>
+                <OutputOption>Create</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Output: Updated Customer table</AnnotationText>
+              <DefaultAnnotationText>Output - CUSTOMERS.xlsx
+Query=Sheet1</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="16">
+          <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+            <Position x="690" y="462" width="288" height="72" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Text><![CDATA[We're assuming these are overwriting the existing Data Warehouse - ORDERS and CUSTOMERS tables that we used as INPUTS on the left.  But, to ensure we can do this exercise repeatedly without affecting the starting state of the orders table, we'll just write to a new file. ]]></Text>
+              <Font name="Arial" size="8.25" style="0" />
+              <TextColor name="Black" />
+              <FillColor name="White" />
+              <Shape shape="0" />
+              <Justification Justification="4" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="14">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="40" y="316" width="436" height="1048" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>INPUTS</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="12">
+          <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+            <Position x="65" y="953" width="386" height="195" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Caption>Returns</Caption>
+              <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+              <Disabled value="False" />
+              <Folded value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <ChildNodes>
+            <Node ToolID="1">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+                <Position x="90" y="1002" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Passwords />
+                  <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">.\Completed Returns - August 2021.xlsx|||`Sheet1$`</File>
+                  <FormatSpecificOptions>
+                    <FirstRowData>False</FirstRowData>
+                    <ImportLine>1</ImportLine>
+                  </FormatSpecificOptions>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText>Completed Returns - August 2021.xlsx
+Query=`Sheet1$`</DefaultAnnotationText>
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="ORDER_ID" size="255" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\Completed Returns - August 2021.xlsx|||`Sheet1$`" type="V_String" />
+                    <Field name="RETURNED" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\Completed Returns - August 2021.xlsx|||`Sheet1$`" type="Bool" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+            </Node>
+            <Node ToolID="13">
+              <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+                <Position x="246" y="1074" width="180" height="40" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Text>These are returns received in August 2021 (Order could be placed prior or during August 2021)</Text>
+                  <Font name="Arial" size="8.25" style="0" />
+                  <TextColor name="Black" />
+                  <FillColor name="White" />
+                  <Shape shape="0" />
+                  <Justification Justification="4" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+            </Node>
+          </ChildNodes>
+        </Node>
+        <Node ToolID="11">
+          <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+            <Position x="65" y="749" width="386" height="180" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Caption>POS Orders Data</Caption>
+              <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+              <Disabled value="False" />
+              <Folded value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <ChildNodes>
+            <Node ToolID="2">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+                <Position x="89" y="798" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Passwords />
+                  <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">.\STORE_TRANSACTIONS_ALL_AUG_2021.csv</File>
+                  <FormatSpecificOptions>
+                    <HeaderRow>True</HeaderRow>
+                    <IgnoreErrors>False</IgnoreErrors>
+                    <AllowShareWrite>False</AllowShareWrite>
+                    <ImportLine>1</ImportLine>
+                    <FieldLen>254</FieldLen>
+                    <SingleThreadRead>False</SingleThreadRead>
+                    <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+                    <Delimeter>,</Delimeter>
+                    <QuoteRecordBreak>False</QuoteRecordBreak>
+                    <CodePage>28591</CodePage>
+                  </FormatSpecificOptions>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText>STORE_TRANSACTIONS_ALL_AUG_2021.csv</DefaultAnnotationText>
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="ORDER_ID" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="PRODUCT_SKU" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="QUANTITY" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="ORDER_DATE" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="CUSTOMER_ID" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="PRODUCT_NAME" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="PRODUCT_DESC" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="PRODUCT_PRICE" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="PRODUCT_CATEGORY" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="FirstName" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="LastName" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="UserName" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="Email" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="State" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="City" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="Street" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="PostCode" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                    <Field name="Phone" size="254" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\STORE_TRANSACTIONS_ALL_AUG_2021.csv" type="V_String" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+            </Node>
+            <Node ToolID="9">
+              <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+                <Position x="222" y="858" width="204" height="36" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Text>This is the Point of Sale (POS) data from August 2021</Text>
+                  <Font name="Arial" size="8.25" style="0" />
+                  <TextColor name="Black" />
+                  <FillColor name="White" />
+                  <Shape shape="0" />
+                  <Justification Justification="4" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+            </Node>
+          </ChildNodes>
+        </Node>
+        <Node ToolID="10">
+          <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+            <Position x="65" y="365" width="386" height="170" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Caption>Data Warehouse - ORDERS</Caption>
+              <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+              <Disabled value="False" />
+              <Folded value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <ChildNodes>
+            <Node ToolID="3">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+                <Position x="90" y="414" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Passwords />
+                  <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">.\Orders Table.xlsx|||`Sheet1$`</File>
+                  <FormatSpecificOptions>
+                    <FirstRowData>False</FirstRowData>
+                    <ImportLine>1</ImportLine>
+                  </FormatSpecificOptions>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText>Orders Table.xlsx
+Query=`Sheet1$`</DefaultAnnotationText>
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="ORDER_ID" size="255" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\Orders Table.xlsx|||`Sheet1$`" type="V_String" />
+                    <Field name="PRODUCT_SKU" size="255" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\Orders Table.xlsx|||`Sheet1$`" type="V_String" />
+                    <Field name="QUANTITY" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\Orders Table.xlsx|||`Sheet1$`" type="Double" />
+                    <Field name="ORDER_DATE" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\Orders Table.xlsx|||`Sheet1$`" type="DateTime" />
+                    <Field name="CUSTOMER_ID" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\Orders Table.xlsx|||`Sheet1$`" type="Double" />
+                    <Field name="RETURNED" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\Orders Table.xlsx|||`Sheet1$`" type="Bool" />
+                    <Field name="PRODUCT_NAME" size="255" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\Orders Table.xlsx|||`Sheet1$`" type="V_String" />
+                    <Field name="PRODUCT_DESC" size="255" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\Orders Table.xlsx|||`Sheet1$`" type="V_String" />
+                    <Field name="PRODUCT_PRICE" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\Orders Table.xlsx|||`Sheet1$`" type="Double" />
+                    <Field name="PRODUCT_CATEGORY" size="255" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\Orders Table.xlsx|||`Sheet1$`" type="V_String" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+            </Node>
+            <Node ToolID="8">
+              <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+                <Position x="222" y="462" width="204" height="48" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Text>This is the existing ORDERS table in the data warehouse. It contains all orders placed prior to August 2021.</Text>
+                  <Font name="Arial" size="8.25" style="0" />
+                  <TextColor name="Black" />
+                  <FillColor name="White" />
+                  <Shape shape="0" />
+                  <Justification Justification="4" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+            </Node>
+          </ChildNodes>
+        </Node>
+        <Node ToolID="18">
+          <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+            <Position x="65" y="557" width="386" height="170" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Caption>Data Warehouse - CUSTOMERS</Caption>
+              <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+              <Disabled value="False" />
+              <Folded value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <ChildNodes>
+            <Node ToolID="5">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+                <Position x="90" y="606" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Passwords />
+                  <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">.\CUSTOMERS.xlsx|||`Sheet1$`</File>
+                  <FormatSpecificOptions>
+                    <FirstRowData>False</FirstRowData>
+                    <ImportLine>1</ImportLine>
+                  </FormatSpecificOptions>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <AnnotationText>Existing Customer table</AnnotationText>
+                  <DefaultAnnotationText>CUSTOMERS.xlsx
+Query=`Sheet1$`</DefaultAnnotationText>
+                  <Left value="False" />
+                </Annotation>
+                <MetaInfo connection="Output">
+                  <RecordInfo>
+                    <Field name="ID" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\CUSTOMERS.xlsx|||`Sheet1$`" type="Double" />
+                    <Field name="FirstName" size="255" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\CUSTOMERS.xlsx|||`Sheet1$`" type="V_String" />
+                    <Field name="LastName" size="255" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\CUSTOMERS.xlsx|||`Sheet1$`" type="V_String" />
+                    <Field name="UserName" size="255" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\CUSTOMERS.xlsx|||`Sheet1$`" type="V_String" />
+                    <Field name="Email" size="255" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\CUSTOMERS.xlsx|||`Sheet1$`" type="V_String" />
+                    <Field name="State" size="255" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\CUSTOMERS.xlsx|||`Sheet1$`" type="V_String" />
+                    <Field name="City" size="255" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\CUSTOMERS.xlsx|||`Sheet1$`" type="V_String" />
+                    <Field name="Street" size="255" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\CUSTOMERS.xlsx|||`Sheet1$`" type="V_String" />
+                    <Field name="PostCode" size="255" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\CUSTOMERS.xlsx|||`Sheet1$`" type="V_String" />
+                    <Field name="Phone" size="255" source="File: C:\Users\Hendrik\OneDrive\Alteryx Bootcamp\Workflows\Orders\CUSTOMERS.xlsx|||`Sheet1$`" type="V_String" />
+                  </RecordInfo>
+                </MetaInfo>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+            </Node>
+            <Node ToolID="17">
+              <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+                <Position x="222" y="654" width="204" height="48" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Text>This is the existing CUSTOMERS table in the data warehouse. It contains details for each customer.</Text>
+                  <Font name="Arial" size="8.25" style="0" />
+                  <TextColor name="Black" />
+                  <FillColor name="White" />
+                  <Shape shape="0" />
+                  <Justification Justification="4" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+            </Node>
+          </ChildNodes>
+        </Node>
+        <Node ToolID="20">
+          <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+            <Position x="65" y="1169" width="386" height="170" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Caption>US State Codes Reference List</Caption>
+              <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+              <Disabled value="False" />
+              <Folded value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <ChildNodes>
+            <Node ToolID="6">
+              <GuiSettings Plugin="AlteryxBasePluginsGui.TextInput.TextInput">
+                <Position x="90" y="1218" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <NumRows value="55" />
+                  <Fields>
+                    <Field name="   State*   " />
+                    <Field name="State_Abbreviated" />
+                  </Fields>
+                  <Data>
+                    <r>
+                      <c>Alabama</c>
+                      <c>AL</c>
+                    </r>
+                    <r>
+                      <c>Alaska</c>
+                      <c>AK</c>
+                    </r>
+                    <r>
+                      <c>Arizona</c>
+                      <c>AZ</c>
+                    </r>
+                    <r>
+                      <c>Arkansas</c>
+                      <c>AR</c>
+                    </r>
+                    <r>
+                      <c>California</c>
+                      <c>CA</c>
+                    </r>
+                    <r>
+                      <c>Colorado</c>
+                      <c>CO</c>
+                    </r>
+                    <r>
+                      <c>Connecticut</c>
+                      <c>CT</c>
+                    </r>
+                    <r>
+                      <c>Delaware</c>
+                      <c>DE</c>
+                    </r>
+                    <r>
+                      <c>Florida</c>
+                      <c>FL</c>
+                    </r>
+                    <r>
+                      <c>Georgia</c>
+                      <c>GA</c>
+                    </r>
+                    <r>
+                      <c>Hawaii</c>
+                      <c>HI</c>
+                    </r>
+                    <r>
+                      <c>Idaho</c>
+                      <c>ID</c>
+                    </r>
+                    <r>
+                      <c>Illinois</c>
+                      <c>IL</c>
+                    </r>
+                    <r>
+                      <c>Indiana</c>
+                      <c>IN</c>
+                    </r>
+                    <r>
+                      <c>Iowa</c>
+                      <c>IA</c>
+                    </r>
+                    <r>
+                      <c>Kansas</c>
+                      <c>KS</c>
+                    </r>
+                    <r>
+                      <c>Kentucky</c>
+                      <c>KY</c>
+                    </r>
+                    <r>
+                      <c>Louisiana</c>
+                      <c>LA</c>
+                    </r>
+                    <r>
+                      <c>Maine</c>
+                      <c>ME</c>
+                    </r>
+                    <r>
+                      <c>Maryland</c>
+                      <c>MD</c>
+                    </r>
+                    <r>
+                      <c>Massachusetts</c>
+                      <c>MA</c>
+                    </r>
+                    <r>
+                      <c>Michigan</c>
+                      <c>MI</c>
+                    </r>
+                    <r>
+                      <c>Minnesota</c>
+                      <c>MN</c>
+                    </r>
+                    <r>
+                      <c>Mississippi</c>
+                      <c>MS</c>
+                    </r>
+                    <r>
+                      <c>Missouri</c>
+                      <c>MO</c>
+                    </r>
+                    <r>
+                      <c>Montana</c>
+                      <c>MT</c>
+                    </r>
+                    <r>
+                      <c>Nebraska</c>
+                      <c>NE</c>
+                    </r>
+                    <r>
+                      <c>Nevada</c>
+                      <c>NV</c>
+                    </r>
+                    <r>
+                      <c>New Hampshire</c>
+                      <c>NH</c>
+                    </r>
+                    <r>
+                      <c>New Jersey</c>
+                      <c>NJ</c>
+                    </r>
+                    <r>
+                      <c>New Mexico</c>
+                      <c>NM</c>
+                    </r>
+                    <r>
+                      <c>New York</c>
+                      <c>NY</c>
+                    </r>
+                    <r>
+                      <c>North Carolina</c>
+                      <c>NC</c>
+                    </r>
+                    <r>
+                      <c>North Dakota</c>
+                      <c>ND</c>
+                    </r>
+                    <r>
+                      <c>Ohio</c>
+                      <c>OH</c>
+                    </r>
+                    <r>
+                      <c>Oklahoma</c>
+                      <c>OK</c>
+                    </r>
+                    <r>
+                      <c>Oregon</c>
+                      <c>OR</c>
+                    </r>
+                    <r>
+                      <c>Pennsylvania</c>
+                      <c>PA</c>
+                    </r>
+                    <r>
+                      <c>Rhode Island</c>
+                      <c>RI</c>
+                    </r>
+                    <r>
+                      <c>South Carolina</c>
+                      <c>SC</c>
+                    </r>
+                    <r>
+                      <c>South Dakota</c>
+                      <c>SD</c>
+                    </r>
+                    <r>
+                      <c>Tennessee</c>
+                      <c>TN</c>
+                    </r>
+                    <r>
+                      <c>Texas</c>
+                      <c>TX</c>
+                    </r>
+                    <r>
+                      <c>Utah</c>
+                      <c>UT</c>
+                    </r>
+                    <r>
+                      <c>Vermont</c>
+                      <c>VT</c>
+                    </r>
+                    <r>
+                      <c>Virginia</c>
+                      <c>VA</c>
+                    </r>
+                    <r>
+                      <c>Washington</c>
+                      <c>WA</c>
+                    </r>
+                    <r>
+                      <c>West Virginia</c>
+                      <c>WV</c>
+                    </r>
+                    <r>
+                      <c>Wisconsin</c>
+                      <c>WI</c>
+                    </r>
+                    <r>
+                      <c>Wyoming</c>
+                      <c>WY</c>
+                    </r>
+                    <r>
+                      <c>American Samoa</c>
+                      <c>AS</c>
+                    </r>
+                    <r>
+                      <c>Guam</c>
+                      <c>GU</c>
+                    </r>
+                    <r>
+                      <c>Northern Mariana Islands</c>
+                      <c>MP</c>
+                    </r>
+                    <r>
+                      <c>Puerto Rico</c>
+                      <c>PR</c>
+                    </r>
+                    <r>
+                      <c>Virgin Islands</c>
+                      <c>VI</c>
+                    </r>
+                  </Data>
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <AnnotationText><![CDATA[US State code reference list
+]]></AnnotationText>
+                  <DefaultAnnotationText>State Code Lookup</DefaultAnnotationText>
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+              <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxTextInput" />
+            </Node>
+            <Node ToolID="19">
+              <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+                <Position x="234" y="1278" width="192" height="36" />
+              </GuiSettings>
+              <Properties>
+                <Configuration>
+                  <Text>This static lookup list maps US state names to US State codes</Text>
+                  <Font name="Arial" size="8.25" style="0" />
+                  <TextColor name="Black" />
+                  <FillColor name="White" />
+                  <Shape shape="0" />
+                  <Justification Justification="4" />
+                </Configuration>
+                <Annotation DisplayMode="0">
+                  <Name />
+                  <DefaultAnnotationText />
+                  <Left value="False" />
+                </Annotation>
+              </Properties>
+            </Node>
+          </ChildNodes>
+        </Node>
+      </ChildNodes>
+    </Node>
+  </Nodes>
+  <Connections />
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Starter workflow 12.2</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="963640b5-6e37-48fe-8d31-70d4760cbd5b" />
+      <Telemetry>
+        <PreviousWorkflowId value="244d69ea-791d-4d93-86d1-11c353b507bf" />
+        <OriginWorkflowId value="244d69ea-791d-4d93-86d1-11c353b507bf" />
+      </Telemetry>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
