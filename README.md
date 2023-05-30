@@ -24,6 +24,7 @@ This diagram illustrates a simple data flow:
 ![img](static/title_img.png)
 - `ETL_pipeline.yxmd:` Demonstrates a sample ETL workflow using Alteryx. This workflow includes steps for data extraction, transformation, and loading.
 
+
 ## Features Data Extraction:
 - **Data Extraction:** Utilizes Alteryx connectors to fetch data from diverse sources such as databases, APIs, and files.
 - **Data Transformation:** Implements transformations like cleaning, filtering, aggregating, and joining data using Alteryx's intuitive workflow interface.
